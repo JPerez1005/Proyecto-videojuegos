@@ -555,4 +555,68 @@ function modificarVideojuego()
     }
 }
 
-export{mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos,contJuegos}
+function buscarJuegos()
+{
+    console.log(listaVideojuegos);
+    let encontrado=false;
+    contJuegos.innerHTML='';
+    let juegoBuscar=d.getElementById('juegoBuscar').value;
+    for (let i = 0; i < listaVideojuegos.length; i++) {
+        const videojuego = listaVideojuegos[i];
+        if(juegoBuscar==videojuego.nombre)
+        {
+            encontrado=true;
+            let datos = `
+            <div class="box">
+            <div class="figure">
+                <img src="${videojuego.imagen}" alt="">
+                <div class="caption">
+                <div class="about">
+                    <h1>${videojuego.nombre}</h1>
+                    <p>${videojuego.tematica}</p>
+                    <p>Puntos: ${videojuego.puntosFidelizacion}</p>
+                    <p>Valor: $${videojuego.valorLicencia}</p>
+                    <div class="btns-group">
+                        <button class="btns" id="btns">Comprar</button>
+                        <button class="btnse" id="btns">Eliminar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+            `;
+            contJuegos.insertAdjacentHTML('beforeend', datos);
+        }
+    }
+
+    if (encontrado==false) {
+        alert('no se encontró')
+        mostrarJuegos();
+    }
+
+    const botonesCompra = d.querySelectorAll('.btns');
+    const botonesEliminar = d.querySelectorAll('.btnse');
+
+    botonesCompra.forEach((boton, index) => {
+        boton.addEventListener('click', () => {
+            // Accede a los datos del videojuego en función del índice
+            const videojuegoSeleccionado = listaVideojuegos[index];
+            // Haz lo que necesites con los datos del videojuego seleccionado
+            console.log('Videojuego seleccionado:', videojuegoSeleccionado);
+            Cliente.comprarJuego(videojuegoSeleccionado);
+        });
+    });
+
+    botonesEliminar.forEach((boton, index) => {
+        boton.addEventListener('click', () => {
+            // Accede al ID único del videojuego que se va a eliminar
+            const idAEliminar = listaVideojuegos[index].id;
+            // Llama al método para eliminar el videojuego
+            Videojuego.eliminarVideojuego(idAEliminar);
+            // Actualiza la vista
+            mostrarJuegos();
+        });
+    });
+}
+
+export{mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos,contJuegos,buscarJuegos}
