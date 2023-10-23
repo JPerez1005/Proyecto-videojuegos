@@ -1,4 +1,4 @@
-import {mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos} from './clientes.js';
+import {mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos,contJuegos} from './clientes.js';
 
 
 const rCliente = d.getElementById('registrarCliente'),
@@ -21,15 +21,15 @@ d.addEventListener("DOMContentLoaded",()=> {
 
 const inputJuegos = d.getElementById("juegoBuscar");
 
-inputJuegos.addEventListener("keyup",() => {
-    let juegoBuscado = inputJuegos.value.toLowerCase();
-    listaPokemon.innerHTML = "";
-    for (let juego of juegos){
-        let nombrePoke = juego.name
-        if (nombrePoke.indexOf(juegoBuscado) !== -1){
-            mostrarPokemon(juego)
+/* inputJuegos.addEventListener("keyup",() => {
+    let juegoBuscado = inputJuegos.value.toLowerCase();//lo que escribio el usuario en minuscula
+    contJuegos.innerHTML = "";
+    for (let juego of listaVideojuegos){
+        let nombreJuego = juego.nombre
+        if (nombreJuego.indexOf(juegoBuscado) !== -1){
+            mostrarJuegos()
         }else if(juegoBuscado==' '){
             alert('madure')
         }
     }
-})
+}); */

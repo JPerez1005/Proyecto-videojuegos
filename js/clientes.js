@@ -1,6 +1,7 @@
 // Auxiliares
 const d = document;
 let idVideojuego = 0;
+let contJuegos = document.getElementById('app');
 // Listas
 let listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
 let listaVideojuegos = JSON.parse(localStorage.getItem('videojuegos')) || [];
@@ -256,7 +257,7 @@ function registrarVideojuego()
 }
 
 function mostrarJuegos() {
-    let contJuegos = document.getElementById('app');
+    
 
     console.log(listaVideojuegos);
     contJuegos.innerHTML='';
@@ -554,4 +555,4 @@ function modificarVideojuego()
     }
 }
 
-export{mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos}
+export{mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos,contJuegos}
