@@ -7,7 +7,7 @@ login.addEventListener('click',()=>{
 
     if (password=='JDPerez1005' && user=='Julian') {
         log=true;
-        window.location.href = 'diseign3.html';
+        window.location.href = '/view/diseign3.html';
     } else {
         alert('Datos Incorrectos');
     }

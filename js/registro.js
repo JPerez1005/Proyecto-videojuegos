@@ -2,7 +2,7 @@ const registro=document.getElementById('registro'),
 salir=document.getElementById('salir');
 
 salir.addEventListener('click',()=>{
-    window.location.href = 'diseign2.html';
+    window.location.href = '../index.html';
 })
 
 function abrirModal(){
