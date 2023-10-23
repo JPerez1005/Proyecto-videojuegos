@@ -5,11 +5,11 @@ let idVideojuego = 0;
 let listaClientes = JSON.parse(localStorage.getItem('clientes')) || [];
 let listaVideojuegos = JSON.parse(localStorage.getItem('videojuegos')) || [];
 // botones
-const registrarCliente = d.getElementById('registrarCliente'),
+/* const registrarCliente = d.getElementById('registrarCliente'),
     modificarCliente = d.getElementById('modificarCliente'),
     modificarVideojuego = d.getElementById('modificarVideojuego'),
     registrarVideojuego = d.getElementById('registrarVideojuego'),
-    buscar=d.getElementById('buscar');
+    buscar=d.getElementById('buscar'); */
 // Componentes
 const tablaClientes = d.getElementById('tablaClientes');
 // mostrar datos
@@ -141,13 +141,13 @@ class Videojuego {
     }
 }
 
-registrarCliente.addEventListener('click', () => {
-    id = d.getElementById('id').value;
-    nombre = d.getElementById('nombre').value;
-    apellido = d.getElementById('apellido').value;
-    telefono = d.getElementById('telefono').value;
-    correo = d.getElementById('correo').value;
-    edad = d.getElementById('edad').value;
+/* registrarCliente.addEventListener('click', () => {
+    let id = d.getElementById('id').value,
+    nombre = d.getElementById('nombre').value,
+    apellido = d.getElementById('apellido').value,
+    telefono = d.getElementById('telefono').value,
+    correo = d.getElementById('correo').value,
+    edad = d.getElementById('edad').value,
     nacionalidad = d.getElementById('nacionalidad').value;
     if (id, nombre, apellido, telefono, correo, edad, nacionalidad) {
         for (let i = 0; i < listaClientes.length; i++) {
@@ -172,9 +172,43 @@ registrarCliente.addEventListener('click', () => {
     } else {
         alert('Complete todos los datos');
     }
-});
+}); */
 
-registrarVideojuego.addEventListener('click', () => {
+function registrarCliente()
+{
+    let id = d.getElementById('id').value,
+    nombre = d.getElementById('nombre').value,
+    apellido = d.getElementById('apellido').value,
+    telefono = d.getElementById('telefono').value,
+    correo = d.getElementById('correo').value,
+    edad = d.getElementById('edad').value,
+    nacionalidad = d.getElementById('nacionalidad').value;
+    if (id, nombre, apellido, telefono, correo, edad, nacionalidad) {
+        for (let i = 0; i < listaClientes.length; i++) {
+            const cliente = listaClientes[i];
+            if (cliente.id === id) {
+                return alert('Ese id ya existe');
+            }
+        }
+        if (edad < 18) {
+            return alert('El cliente no tiene la edad necesaria...');
+        }
+        Cliente.agregarCliente(listaClientes, id, nombre, apellido, telefono, correo, edad, nacionalidad);
+        d.getElementById('id').value = '';
+        d.getElementById('nombre').value = '';
+        d.getElementById('apellido').value = '';
+        d.getElementById('telefono').value = '';
+        d.getElementById('correo').value = '';
+        d.getElementById('edad').value = '';
+        d.getElementById('nacionalidad').value = '';
+        alert('datos agregados correctamente...');
+        console.log(listaClientes);
+    } else {
+        alert('Complete todos los datos');
+    }
+}
+
+/* registrarVideojuego.addEventListener('click', () => {
     idVideojuego++;
     nombreJuego = d.getElementById('nombreJuego').value;
     tematica = d.getElementById('tematica').value;
@@ -195,7 +229,31 @@ registrarVideojuego.addEventListener('click', () => {
     } else {
         alert('Complete todos los datos...');
     }
-});
+}); */
+
+function registrarVideojuego()
+{
+    idVideojuego++;
+    nombreJuego = d.getElementById('nombreJuego').value;
+    tematica = d.getElementById('tematica').value;
+    valor = d.getElementById('valor').value;
+    puntos = d.getElementById('puntos').value;
+    imagen = d.getElementById('imagen').value;
+
+    if (nombreJuego, tematica, valor, puntos, imagen) {
+        Videojuego.agregarVideojuego(listaVideojuegos, idVideojuego, nombreJuego, tematica, valor, puntos, imagen);
+        console.log(listaVideojuegos);
+        alert('Datos agregados correctamente...');
+        d.getElementById('nombreJuego').value = '';
+        d.getElementById('tematica').value = '';
+        d.getElementById('valor').value = '';
+        d.getElementById('puntos').value = '';
+        d.getElementById('imagen').value = '';
+        mostrarJuegos();
+    } else {
+        alert('Complete todos los datos...');
+    }
+}
 
 function mostrarJuegos() {
     let contJuegos = document.getElementById('app');
@@ -251,7 +309,7 @@ function mostrarJuegos() {
     });
 }
 
-buscar.addEventListener('click',()=>{
+/* buscar.addEventListener('click',()=>{
     let buscarId=d.getElementById('buscarId').value;
     let encontrado=false;
     for (let i = 0; i < listaClientes.length; i++) {
@@ -298,9 +356,59 @@ buscar.addEventListener('click',()=>{
         Cliente.eliminarCliente(listaClientes,buscarId);
         tablaClientes.style.visibility='hidden';
     });
-});
+}); */
 
-modificarCliente.addEventListener('click',()=>{
+function buscar()
+{
+    let buscarId=d.getElementById('buscarId').value;
+    let encontrado=false;
+    for (let i = 0; i < listaClientes.length; i++) {
+        const cliente = listaClientes[i];
+        if (parseFloat(cliente.id) == buscarId) {
+            encontrado=true;
+            let datos=`
+            <h1>${cliente.id}</h1>
+            <h2>${cliente.nombres} ${cliente.apellidos}</h2>
+            <p>${cliente.telefono}</p>
+            <p>Correo: ${cliente.correo}</p>
+            <p>Edad: ${cliente.edad}</p>
+            <p>Puntos: ${cliente.puntos}</p>
+            <h3>${cliente.nacionalidad}</h3>
+            <br>
+            `
+            let datos2,datos3,datos4;
+            if(cliente.videojuegos.length>0){
+                datos2=`<h3>Juegos Comprados:</h3>
+                <ul>`;
+                datos3='';
+                for (let i = 0; i < cliente.videojuegos.length; i++) {
+                    const juego = cliente.videojuegos[i];
+                    datos3+=`<li>${juego.nombre}</li>`;
+                }
+                datos4=`</ul>`
+            }
+            let datos5=`
+            <br>
+            <button class="btn" id="eliminarCliente">Eliminar Cliente</button>
+            `;
+            tablaClientes.style.visibility='visible';
+            tablaClientes.innerHTML=datos+datos2+datos3+datos4+datos5;
+            break;
+        }
+    }
+    if(encontrado==false)
+    {
+        alert('no se encontró')
+    }
+    const eliminarClientes = d.getElementById('eliminarCliente');
+    eliminarClientes.addEventListener('click',()=>{
+        let buscarId=d.getElementById('buscarId').value;
+        Cliente.eliminarCliente(listaClientes,buscarId);
+        tablaClientes.style.visibility='hidden';
+    });
+}
+
+/* modificarCliente.addEventListener('click',()=>{
     let id = d.getElementById('id').value,
     nombre = d.getElementById('nombre').value,
     apellido = d.getElementById('apellido').value,
@@ -337,9 +445,49 @@ modificarCliente.addEventListener('click',()=>{
     } else {
         alert('Complete todos los datos');
     }
-})
+}) */
 
-modificarVideojuego.addEventListener('click',()=>{
+function modificarCliente()
+{
+    let id = d.getElementById('id').value,
+    nombre = d.getElementById('nombre').value,
+    apellido = d.getElementById('apellido').value,
+    telefono = d.getElementById('telefono').value,
+    correo = d.getElementById('correo').value,
+    edad = d.getElementById('edad').value,
+    nacionalidad = d.getElementById('nacionalidad').value;
+    let encontrado=false;
+
+    if (id, nombre, apellido, telefono, correo, edad, nacionalidad) {
+        for (let i = 0; i < listaClientes.length; i++) {
+            const cliente = listaClientes[i];
+            if (cliente.id === id) {
+                encontrado=true;
+                if (edad < 18) {
+                    return alert('El cliente no tiene la edad necesaria...');
+                }
+                Cliente.modificarCliente(listaClientes,id,nombre,apellido,telefono,correo,edad,nacionalidad);
+                d.getElementById('id').value = '';
+                d.getElementById('nombre').value = '';
+                d.getElementById('apellido').value = '';
+                d.getElementById('telefono').value = '';
+                d.getElementById('correo').value = '';
+                d.getElementById('edad').value = '';
+                d.getElementById('nacionalidad').value = '';
+                alert('datos modificados correctamente...');
+                console.log(listaClientes);
+            }
+        }
+        if (encontrado==false) {
+            alert('No se encontró el usuario');
+        }
+        
+    } else {
+        alert('Complete todos los datos');
+    }
+}
+
+/* modificarVideojuego.addEventListener('click',()=>{
     let nombreJuego = d.getElementById('nombreJuego').value,
     tematica = d.getElementById('tematica').value,
     valor = d.getElementById('valor').value,
@@ -370,6 +518,40 @@ modificarVideojuego.addEventListener('click',()=>{
     } else {
         alert('Complete todos los datos');
     }
-});
+}); */
 
+function modificarVideojuego()
+{
+    let nombreJuego = d.getElementById('nombreJuego').value,
+    tematica = d.getElementById('tematica').value,
+    valor = d.getElementById('valor').value,
+    puntos = d.getElementById('puntos').value,
+    imagen = d.getElementById('imagen').value;
+    let encontrado=false;
 
+    if (nombreJuego, tematica, valor, puntos, imagen) {
+        for (let i = 0; i < listaVideojuegos.length; i++) {
+            const videojuego = listaVideojuegos[i];
+            if (videojuego.nombre === nombreJuego) {
+                encontrado=true;
+                Videojuego.modificarVideojuego(listaVideojuegos,nombreJuego,tematica,valor,puntos,imagen);
+                d.getElementById('nombreJuego').value = '';
+                d.getElementById('tematica').value = '';
+                d.getElementById('valor').value = '';
+                d.getElementById('puntos').value = '';
+                d.getElementById('imagen').value = '';
+                mostrarJuegos();
+                alert('datos modificados correctamente...');
+                console.log(listaVideojuegos);
+            }
+        }
+        if (encontrado==false) {
+            alert('No se encontró el videojuego');
+        }
+        
+    } else {
+        alert('Complete todos los datos');
+    }
+}
+
+export{mostrarJuegos,registrarCliente,registrarVideojuego,buscar,modificarCliente,modificarVideojuego,d,listaVideojuegos}
