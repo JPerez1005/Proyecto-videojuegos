@@ -1,0 +1,495 @@
+*, *::before, *::after
+{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #333;
+    color: #fff;
+}
+
+.btnLogin-popup{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+
+.btnLogin-popup:hover{
+    background: #fff;
+    color: black;
+}
+
+.wrapper{/*caja del login*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    z-index: 6;
+    justify-content: center;/*centra horizontalmente*/
+    align-items: center;/*centra verticalmente*/
+    overflow: hidden;/*esto esconde el icono de cerrar por fuera del box, se sigue mostrando por dentro*/
+    transform: scale(0);/*esto esconde el login*/
+    transition: transform .5s ease/*al aparecer aparece en modo expansion*/, height .2s ease;/*se expande la caja*/
+}
+
+.wrapper.active-popup{
+    transform: scale(1);
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper.active{
+    height: 520px;
+}
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+    /* display: none; */
+}
+.wrapper.active .form-box.login{
+    /* display: none; */
+    transition: none;
+    transform: translate(-400px);
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: rgb(159, 27, 27);
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: #fff;
+    text-align: center;/*cenra horizontalmente el texto*/
+
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid #222;
+    margin: 30px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    font-weight: 700;
+    pointer-events: none;
+    transition: .5s;
+    color: #000;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #222;
+    font-weight: 600;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #222;
+    line-height: 57px;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background: #222;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;
+}
+
+.logo
+{
+    width: 100px
+}
+
+header
+{
+    position: absolute;
+    z-index: 999;
+    width: 100%;
+    padding: 0.9rem 0;
+    top: 0;
+    left: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+header nav
+{
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header ul
+{
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+
+header ul a
+{
+    text-decoration: none;
+    color: #fff;
+    padding: 0 1.5rem;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 0.83rem;
+}
+
+.search a
+{
+    font-size: 1.05rem;
+    padding: 0 3rem;
+}
+
+.hamburger
+{
+    padding-left: 1.5rem;
+}
+
+.hamburger a
+{
+    padding: 0%;
+    width: 37px;
+    height: 37px;
+    display: flex;
+    border-radius: 50%;
+    /* background-color: rgba(115, 155, 115, 0.7); */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+}
+
+.hamburger .bar
+{
+    position: relative;
+    width: 52%;
+    height: 1.3px;
+    background-color: #fff;
+    border-radius: 2px;
+}
+
+.hamburger .bar::before, .hamburger .bar::after
+{
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 60%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: 2px;
+}
+
+.hamburger .bar::before
+{
+    top: -4.5px;
+}
+
+.hamburger .bar::after
+{
+    top: 4.5px;
+}
+
+main
+{
+    position: relative;
+    /* background-color: #353; */
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.bg-img
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url(../Assets/bg.png);
+    background-size: cover;
+    z-index: 1;
+}
+
+
+
+.fog_1
+{
+    position: absolute;
+    width: 1900px;
+    top: calc(60% + 85px);
+    left: calc(60% + 5px);
+    transform: translate(-50%,-50%);
+    z-index: 4;
+}
+
+.fog_2
+{
+    position: absolute;
+    width: 1900px;
+    top: calc(45% + 85px);
+    left: calc(60% + 5px);
+    transform: translate(-50%,-50%);
+    z-index: 3;
+}
+
+.asset1
+{
+    position: absolute;
+    width: 400px;
+    top: calc(50%);
+    left: calc(85%);
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+.asset4
+{
+    position: absolute;
+    width: 400px;
+    top: calc(80%);
+    left: calc(90%);
+    transform: translate(-50%,-50%);
+    z-index: 3;
+}
+
+.asset2
+{
+    position: absolute;
+    width: 400px;
+    top: calc(50%);
+    left: calc(15%);
+    transform: translate(-50%,-50%);
+    z-index: 2;
+}
+
+.asset3
+{
+    position: absolute;
+    width: 400px;
+    top: calc(75%);
+    left: calc(14%);
+    transform: translate(-50%,-50%);
+    z-index: 3;
+}
+
+.pilar
+{
+    position: absolute;
+    width: 700px;
+    top: calc(50%);
+    left: calc(60%);
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.montanas2
+{
+    position: absolute;
+    width: 700px;
+    top: calc(96%);
+    left: calc(55%);
+    transform: translate(-50%, -50%);
+    z-index: 4;
+}
+
+.montanas1
+{
+    position: absolute;
+    width: 700px;
+    top: calc(90%);
+    left: calc(30%);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.text
+{
+    position: absolute;
+    z-index: 4;
+    top: calc(50%);
+    left: calc(50%);
+    transform: translate(-50%,-50%);
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    pointer-events: auto;
+    z-index: 1;
+}
+
+.text h2
+{
+    font-weight: 100;
+    font-size: 3rem;
+    line-height: 0.88;
+    color: #000;
+}
+
+.text h1
+{
+    font-weight: 800;
+    font-size: 5rem;
+    line-height: 0.88;
+}
+
+.vignette
+{
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: radial-gradient(ellipse at center, rgba(0,0,0,0)65%,
+    rgba(0,0,0,0.7));
+    pointer-events: none;
+}
+
+.parallax
+{
+    pointer-events: none;
+    transition: 0.09s;
+}
+
+@media (max-width: 800px) {
+
+    body
+    {
+        color: #000;
+    }
+
+    header
+    {
+        backdrop-filter: blur(20px);
+    }
+
+    nav ul li a
+    {
+        color: #000;
+    }
+
+    .hamburger .bar
+    {
+        background-color: #000;
+    }
+
+    .bg-img
+    {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        background-image: url(../img/bg5.jpg);
+        background-size: cover;
+        background-position: center;
+        z-index: 1;
+    }
+
+    .asset1
+    {
+        visibility: hidden;
+    }
+
+    .asset4
+    {
+        visibility: hidden;
+    }
+
+    .asset2
+    {
+        visibility: hidden;
+    }
+
+    .asset3
+    {
+        visibility: hidden;
+    }
+
+    .pilar
+    {
+        visibility: hidden;
+    }
+
+    .montanas2
+    {
+        visibility: hidden;
+    }
+
+    .montanas1
+    {
+        visibility: hidden;
+    }
+
+    .text
+    {
+        visibility: hidden;
+    }
+}

@@ -1,0 +1,547 @@
+*
+{
+    top: 0;
+    left: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* Personalizar el scroll vertical */
+/* Ancho del scroll */
+::-webkit-scrollbar {
+    width: 5px;
+    border-radius: 10px;
+}
+
+/* Fondo del scroll */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Pulgar del scroll */
+::-webkit-scrollbar-thumb {
+    background: #000;
+}
+
+/* Cambia el color del pulgar cuando el mouse está sobre él */
+::-webkit-scrollbar-thumb:hover {
+    background: #000;
+}
+
+
+:root
+{
+    --main-color: #677951;
+    --back-color: rgba(0, 0, 0, 0.5);
+}
+
+body{
+    background: var(--back-color);
+    height: 200vh;
+}
+
+main
+{
+    transition: 0.8s;
+    background: var(--back-color);
+}
+
+section
+{
+    top: 0;
+    left: 0;
+    position: relative;
+    width: 100%;
+    height: 110vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.8s;
+}
+
+section::before
+{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(to top, #000522,transparent);
+    z-index: 1;
+}
+
+nav{
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 45px;
+    color: #fff;
+    backdrop-filter: blur(20px);
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+nav button{
+    background: transparent;
+    border:solid 2px #fff;
+    color: #fff;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+nav button:hover{
+    background-color: #fff;
+    color: #000;
+}
+
+.wrapper{/*caja del login*/
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 490px;
+    height: 500px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    z-index: 6;
+    justify-content: center;/*centra horizontalmente*/
+    align-items: center;/*centra verticalmente*/
+    overflow: hidden;/*esto esconde el icono de cerrar por fuera del box, se sigue mostrando por dentro*/
+    transform: scale(0);/*esto esconde el login*/
+    transition: transform .5s ease/*al aparecer aparece en modo expansion*/, height .2s ease;/*se expande la caja*/
+}
+
+.wrapper.active-popup{
+    transform: scale(1);
+    z-index: 6;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.wrapper.active{
+    padding: 2% 10%;
+    height: 470px;
+}
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 0 20%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0 10%;
+}
+
+.wrapper .form-box.cliente{
+    transition: transform .18s ease;
+    transform: translateX(0);
+    /* display: none; */
+}
+.wrapper.active .form-box.cliente{
+    /* display: none; */
+    transition: none;
+    transform: translate(-400px);
+}
+
+.wrapper .form-box.game{
+    position: absolute;
+    transition: none;
+    padding: 15%;
+    transform: translateX(400px);/*translada a la derecha la caja de registro*/
+}
+
+.wrapper.active .form-box.game{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 45px;
+    background: rgb(159, 27, 27);
+    font-size: 2em;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-box h2{
+    font-size: 1em;
+    color: #000;
+    text-align: center;/*cenra horizontalmente el texto*/
+
+}
+
+.input-box{
+    position: relative;
+    width: 40%;
+    height: 40px;
+    border-bottom: 2px solid #222;
+    margin: 20px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    font-weight: 700;
+    pointer-events: none;
+    transition: .5s;
+    color: #000;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label{
+    top: -5px;
+}
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #222;
+    font-weight: 600;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: #222;
+    line-height: 57px;
+}
+
+.group-btn{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn{
+    width: 40%;
+    height: 45px;
+    background: #222;
+    border: #fff 2px solid;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;bottom: 15px;
+    transition: .5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.btn:hover{
+    background-color: #fff;
+    color: #222;
+}
+
+.btns-group{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.btns{
+    width: 50%;
+    height: 35px;
+    background: transparent;
+    border: #fff 2px solid;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;bottom: 15px;
+    transition: .5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.btns:active{
+    background: #fff;
+    color: #222;
+}
+
+.btnse{
+    width: 50%;
+    height: 35px;
+    background: transparent;
+    border: #fff 2px solid;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: #fff;
+    font-weight: 500;bottom: 15px;
+    transition: .5s cubic-bezier(0.215, 0.610, 0.355, 1);
+}
+
+.btnse:active{
+    background: #fff;
+    color: #222;
+}
+
+img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.personaje
+{
+    top: 25%;
+    width: 50%;
+    left: 0;
+    object-fit: contain;
+}
+
+#text
+{
+    position: relative;
+    color: #fff;
+    font-size: 10vw;
+}
+
+.sec
+{
+    position: relative;
+    min-height: 500px;
+    padding: 100px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.sec::before{
+    content: "";
+    position: absolute;
+    top: -5%;
+    left: 0;
+    width: 100%;
+    height: 5%; /* Ajusta la altura del degradado según tus necesidades */
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9)); /* Degradado */
+
+    /* Puedes ajustar los colores y la opacidad del degradado según tus necesidades */
+}
+
+.sec .content
+{
+    position: relative;
+    z-index: 2;
+}
+
+.sec .content h2
+{
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.sec .content p
+{
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.container
+{
+    padding: 0 80px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: relative;
+}
+
+.box{
+    position: relative;
+    margin: 5% 5%;
+    min-width: 250px;
+    height: 350px;
+    background: #000;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.figure{
+    width: 100%;
+    height: 100%;
+}
+
+.figure img{
+    width: 100%;
+    transition: .5s;
+}
+
+.box:hover .figure img{
+    transform: rotate(-10deg) scale(1.3);
+    opacity: .5;
+}
+
+.caption{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    /* background: #fff; */
+}
+
+.about{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    padding: 20px;
+    transition: .5s;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+}
+
+.box:hover .about{
+    opacity: 1;
+}
+
+.caption:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    box-sizing: border-box;
+    transition: .5s;
+    transform: scale(0,1);
+}
+
+.box:hover .caption:before{
+    transform: scale(1,1);
+}
+
+.caption::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    box-sizing: border-box;
+    transition: .5s;
+    transform: scale(1,0);
+}
+
+.box:hover .caption:after{
+    transform: scale(1,1);
+}
+
+.listas{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../img/titanfallbg.jpg);
+    background-size: cover;
+    position: relative;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.tablaClientes{
+    width: 30%;
+    min-height: 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    padding: 5%;
+    backdrop-filter: blur(20px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+.tablaClientes ul{
+    color: #000;
+}
+
+.tablaClientes h3{
+    color: #000;
+}
+
+.input-index{
+    position: absolute;
+    width: 20%;
+    height: 40px;
+    border-bottom: 2px solid #222;
+    margin: 20px 0;
+    top: 20%;
+    left: 10%;
+}
+
+.input-index label{
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    font-weight: 700;
+    pointer-events: none;
+    transition: .5s;
+    color: #000;
+}
+
+.input-index input:focus ~ label,
+.input-index input:valid ~ label{
+    top: -5px;
+}
+
+.input-index input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: #222;
+    font-weight: 600;
+}
+

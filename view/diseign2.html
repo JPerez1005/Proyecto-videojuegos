@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/diseign.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1 class="logo">GameSoft</h1>
+            <ul>
+                <button class="btnLogin-popup">Login</button>
+                <li class="hamburger">
+                    <a href="#">
+                        <div class="bar"></div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close">x</ion-icon></span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                <input type="text" required id="user">
+                <label>User</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                <input type="password" required id="password">
+                <label>Password</label>
+            </div>
+            <button type="submit" class="btn" id="login">Login</button>
+        </div>
+    </div>
+    <main>
+        <div class="vignette"></div>
+        <div class="bg-img">
+            <!-- <div class="bg-img2">
+
+            </div> -->
+        </div>
+        <img src="../img/fog_7.png" data-speedx="0.3" data-speedy="0.3" class="parallax fog_7">
+        <img src="../img/fog_6.png" data-speedx="0.27" data-speedy="0.12" class="parallax fog_6">
+        <img src="../img/fog_5.png" data-speedx="0.12" data-speedy="0.22"  class="parallax fog_5">
+        <img src="../img/fog_4.png" data-speedx="0.4" data-speedy="0.312"  class="parallax fog_4">
+        <img src="../img/fog_3.png" data-speedx="0.34" data-speedy="0.212"  class="parallax fog_3">
+        <img src="../img/fog_2.png" data-speedx="0.23" data-speedy="0.112"  class="parallax fog_2">
+        <img src="../img/fog_1.png" data-speedx="0.13" data-speedy="0.412"  class="parallax fog_1">
+        <img src="../Assets/master.png"  data-speedx="0.0153" data-speedy="0.012"  class="parallax asset1">
+        <img src="../Assets/no-master.png"  data-speedx="0.0123" data-speedy="0.012"  class="parallax asset2">
+        <img src="../Assets/grupo-master.png"  data-speedx="0.033" data-speedy="0.032"  class="parallax asset3">
+        <img src="../Assets/grupo-no-master.png"  data-speedx="0.033" data-speedy="0.032"  class="parallax asset4">
+        <img src="../Assets/pilar.png" alt=""  data-speedx="0.013" data-speedy="0.012"  class="parallax pilar">
+        <img src="../Assets/montanas1.png" alt="" data-distance="0" data-speedx="0.043" data-speedy="0.055"  class="parallax montanas1">
+        <img src="../Assets/montanas2.png" alt=""  data-speedx="0.013" data-speedy="0.012"  class="parallax montanas2">
+        <div  data-speedx="0.093" data-speedy="0.0935"  class="parallax text">
+            <h1>GameSoft</h1>
+            <h2>Creando mundos virtuales, forjando sueños reales.</h2>
+        </div>
+
+    </main>
+    <!-- Stilos animados -->
+    <script src="../js/mouseMove.js"></script>
+    <script src="../js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/diseign3.css">
+</head>
+<body>
+    <!-- <div id="loading-page"></div> -->
+    <main>
+        <nav>
+            <h1 class="logo">GameSoft</h1>
+            <ul>
+                <button class="btnIncripcion">Inscribir</button>
+                <button id="salir">Salir</button>
+            </ul>
+        </nav>
+        <div class="wrapper" id="wrapper">
+            <span class="icon-close"><ion-icon name="close">x</ion-icon></span>
+            <div class="form-box cliente">
+                <h1>Gestion Cliente</h1>
+                <div class="input-box">
+                    <input type="number" required id="id">
+                    <label>Cedula</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="nombre">
+                    <label>Nombre</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="apellido">
+                    <label>Apellido</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" required id="telefono">
+                    <label>Telefono</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="correo">
+                    <label>Correo</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" required id="edad">
+                    <label>Edad</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="nacionalidad">
+                    <label>Nacionalidad</label>
+                </div>
+                <div class="cliente-game">
+                    <p>Gestion de <a href="#" class="game-link">Juegos</a></p>
+                </div>
+                <div class="group-btn">
+                    <button class="btn" id="registrarCliente">Registrar</button>
+                    <button class="btn" id="modificarCliente">Modificar</button>
+                </div>
+            </div>
+            <div class="form-box game">
+                <h1>Gestion Juegos</h1>
+                <div class="input-box">
+                    <input type="text" required id="nombreJuego">
+                    <label>Nombre Videojuego</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="tematica">
+                    <label>Tematica</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" required id="valor">
+                    <label>Valor</label>
+                </div>
+                <div class="input-box">
+                    <input type="number" required id="puntos">
+                    <label>Puntos</label>
+                </div>
+                <div class="input-box">
+                    <input type="text" required id="imagen">
+                    <label>url Imagen</label>
+                </div>
+                <div class="cliente-game">
+                    <p>Gestion de <a href="#" class="cliente-link">Clientes</a></p>
+                </div>
+                <div class="group-btn">
+                    <button class="btn" id="registrarVideojuego">Registrar</button>
+                    <button class="btn" id="modificarVideojuego">Modificar</button>
+                </div>
+            </div>
+        </div>
+        <section>
+            <img src="../img/bg6.jpg" alt="" id="bg">
+            <h2 id="text">Bienvenido</h2>
+            <img src="../img/kratos.png" alt="" id="man" class="personaje">
+            <img src="../img/fog_1.png" id="cloud_1" alt="">
+            <img src="../img/fog_2.png" id="cloud_2" alt="">
+        </section>
+        <div class="sec">
+            <div id="app" class="container">
+                <div class="box">
+                    <div class="figure">
+                        <img src="../img/bg5.jpg" alt="">
+                        <div class="caption">
+                            <div class="about">
+                                <h1>Halo 5</h1>
+                                <p>Lorem ipsum dolor sit amet.</p>
+                                <button>Comprar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="listas">
+            <br><br><br>
+            <center>
+                <h1 style="font-weight: 900;font-family: 'Courier New', Courier, monospace;color: white;">Buscar Clientes</h1>
+            </center>
+            <div class="input-index">
+                <input type="number" required id="buscarId">
+                <label>Digite cedula a buscar</label>
+                <br><br><br>
+                <button class="btn" id="buscar">Buscar</button>
+            </div>
+            <div class="tablaClientes" id="tablaClientes">
+                
+            </div>
+        </div>
+    </main>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" integrity="sha512-16esztaSRplJROstbIIdwX3N97V1+pZvV33ABoG1H2OyTttBxEGkTsoIVsiP1iaTtM8b3+hu2kB6pQ4Clr5yug==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" integrity="sha512-Ic9xkERjyZ1xgJ5svx3y0u3xrvfT/uPkV99LBwe68xjy/mGtO+4eURHZBW2xW4SZbFrF1Tf090XqB+EVgXnVjw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Mis scripts -->
+    <script src="../js/registro.js"></script>
+    <script src="../js/animaciones.js"></script>
+    <script src="../js/clientes.js"></script>
+</body>
+</html>
