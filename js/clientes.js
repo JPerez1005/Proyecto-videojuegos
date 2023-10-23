@@ -10,8 +10,6 @@ const registrarCliente = d.getElementById('registrarCliente'),
     modificarVideojuego = d.getElementById('modificarVideojuego'),
     registrarVideojuego = d.getElementById('registrarVideojuego'),
     buscar=d.getElementById('buscar');
-    
-
 // Componentes
 const tablaClientes = d.getElementById('tablaClientes');
 // mostrar datos
@@ -113,6 +111,21 @@ class Videojuego {
         const nuevoVideojuego = new Videojuego(id, nombre, tematica, valorLicencia, puntosFidelizacion, imagen);
         listaVideojuegos.push(nuevoVideojuego);
         localStorage.setItem('videojuegos', JSON.stringify(listaVideojuegos));
+    }
+
+    static modificarVideojuego(listaVideojuegos, nombre, tematica, valorLicencia, puntosFidelizacion, imagen) {
+        for (let i = 0; i < listaVideojuegos.length; i++) {
+            const videojuego = listaVideojuegos[i];
+            if (videojuego.nombre === nombre) {
+                videojuego.tematica = tematica;
+                videojuego.valorLicencia = valorLicencia;
+                videojuego.puntosFidelizacion = puntosFidelizacion;
+                videojuego.imagen = imagen;
+                localStorage.setItem('videojuegos', JSON.stringify(listaVideojuegos));
+                alert('modificado Correctamente');
+                break;
+            }
+        }
     }
 
     static eliminarVideojuego(juego){
@@ -286,4 +299,77 @@ buscar.addEventListener('click',()=>{
         tablaClientes.style.visibility='hidden';
     });
 });
+
+modificarCliente.addEventListener('click',()=>{
+    let id = d.getElementById('id').value,
+    nombre = d.getElementById('nombre').value,
+    apellido = d.getElementById('apellido').value,
+    telefono = d.getElementById('telefono').value,
+    correo = d.getElementById('correo').value,
+    edad = d.getElementById('edad').value,
+    nacionalidad = d.getElementById('nacionalidad').value;
+    let encontrado=false;
+
+    if (id, nombre, apellido, telefono, correo, edad, nacionalidad) {
+        for (let i = 0; i < listaClientes.length; i++) {
+            const cliente = listaClientes[i];
+            if (cliente.id === id) {
+                encontrado=true;
+                if (edad < 18) {
+                    return alert('El cliente no tiene la edad necesaria...');
+                }
+                Cliente.modificarCliente(listaClientes,id,nombre,apellido,telefono,correo,edad,nacionalidad);
+                d.getElementById('id').value = '';
+                d.getElementById('nombre').value = '';
+                d.getElementById('apellido').value = '';
+                d.getElementById('telefono').value = '';
+                d.getElementById('correo').value = '';
+                d.getElementById('edad').value = '';
+                d.getElementById('nacionalidad').value = '';
+                alert('datos modificados correctamente...');
+                console.log(listaClientes);
+            }
+        }
+        if (encontrado==false) {
+            alert('No se encontró el usuario');
+        }
+        
+    } else {
+        alert('Complete todos los datos');
+    }
+})
+
+modificarVideojuego.addEventListener('click',()=>{
+    let nombreJuego = d.getElementById('nombreJuego').value,
+    tematica = d.getElementById('tematica').value,
+    valor = d.getElementById('valor').value,
+    puntos = d.getElementById('puntos').value,
+    imagen = d.getElementById('imagen').value;
+    let encontrado=false;
+
+    if (nombreJuego, tematica, valor, puntos, imagen) {
+        for (let i = 0; i < listaVideojuegos.length; i++) {
+            const videojuego = listaVideojuegos[i];
+            if (videojuego.nombre === nombreJuego) {
+                encontrado=true;
+                Videojuego.modificarVideojuego(listaVideojuegos,nombreJuego,tematica,valor,puntos,imagen);
+                d.getElementById('nombreJuego').value = '';
+                d.getElementById('tematica').value = '';
+                d.getElementById('valor').value = '';
+                d.getElementById('puntos').value = '';
+                d.getElementById('imagen').value = '';
+                mostrarJuegos();
+                alert('datos modificados correctamente...');
+                console.log(listaVideojuegos);
+            }
+        }
+        if (encontrado==false) {
+            alert('No se encontró el videojuego');
+        }
+        
+    } else {
+        alert('Complete todos los datos');
+    }
+});
+
 

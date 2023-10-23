@@ -285,9 +285,9 @@ main
 .fog_1
 {
     position: absolute;
-    width: 1900px;
+    width: 2500px;
     top: calc(60% + 85px);
-    left: calc(60% + 5px);
+    left: calc(50% + 5px);
     transform: translate(-50%,-50%);
     z-index: 4;
 }
@@ -295,9 +295,9 @@ main
 .fog_2
 {
     position: absolute;
-    width: 1900px;
+    width: 2500px;
     top: calc(45% + 85px);
-    left: calc(60% + 5px);
+    left: calc(50% + 5px);
     transform: translate(-50%,-50%);
     z-index: 3;
 }
@@ -305,9 +305,9 @@ main
 .asset1
 {
     position: absolute;
-    width: 400px;
-    top: calc(50%);
-    left: calc(85%);
+    width: 530px;
+    top: calc(45%);
+    left: calc(90%);
     transform: translate(-50%,-50%);
     z-index: 2;
 }
@@ -315,9 +315,9 @@ main
 .asset4
 {
     position: absolute;
-    width: 400px;
-    top: calc(80%);
-    left: calc(90%);
+    width: 530px;
+    top: calc(75%);
+    left: calc(92%);
     transform: translate(-50%,-50%);
     z-index: 3;
 }
@@ -325,9 +325,9 @@ main
 .asset2
 {
     position: absolute;
-    width: 400px;
+    width: 530px;
     top: calc(50%);
-    left: calc(15%);
+    left: calc(10%);
     transform: translate(-50%,-50%);
     z-index: 2;
 }
@@ -335,9 +335,9 @@ main
 .asset3
 {
     position: absolute;
-    width: 400px;
+    width: 530px;
     top: calc(75%);
-    left: calc(14%);
+    left: calc(10%);
     transform: translate(-50%,-50%);
     z-index: 3;
 }
@@ -345,7 +345,7 @@ main
 .pilar
 {
     position: absolute;
-    width: 700px;
+    width: 900px;
     top: calc(50%);
     left: calc(60%);
     transform: translate(-50%, -50%);
@@ -355,7 +355,7 @@ main
 .montanas2
 {
     position: absolute;
-    width: 700px;
+    width: 900px;
     top: calc(96%);
     left: calc(55%);
     transform: translate(-50%, -50%);
@@ -365,9 +365,9 @@ main
 .montanas1
 {
     position: absolute;
-    width: 700px;
+    width: 1000px;
     top: calc(90%);
-    left: calc(30%);
+    left: calc(32%);
     transform: translate(-50%, -50%);
     z-index: 2;
 }
