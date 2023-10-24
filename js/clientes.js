@@ -235,10 +235,10 @@ function registrarCliente()
 function registrarVideojuego()
 {
     idVideojuego++;
-    nombreJuego = d.getElementById('nombreJuego').value;
-    tematica = d.getElementById('tematica').value;
-    valor = d.getElementById('valor').value;
-    puntos = d.getElementById('puntos').value;
+    let nombreJuego = d.getElementById('nombreJuego').value,
+    tematica = d.getElementById('tematica').value,
+    valor = d.getElementById('valor').value,
+    puntos = d.getElementById('puntos').value,
     imagen = d.getElementById('imagen').value;
 
     if (nombreJuego, tematica, valor, puntos, imagen) {
