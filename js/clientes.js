@@ -393,7 +393,11 @@ function buscar()
             <button class="btn" id="eliminarCliente">Eliminar Cliente</button>
             `;
             tablaClientes.style.visibility='visible';
-            tablaClientes.innerHTML=datos+datos2+datos3+datos4+datos5;
+            if(cliente.videojuegos.length>0){
+                tablaClientes.innerHTML=datos+datos2+datos3+datos4+datos5;
+            }else{
+                tablaClientes.innerHTML=datos+datos5;
+            }
             break;
         }
     }

@@ -7,7 +7,7 @@ login.addEventListener('click',()=>{
 
     if (password=='JDPerez1005' && user=='Julian') {
         log=true;
-        window.location.href = '../view/gestiones.html';
+        window.location.href = 'https://JPerez1005.github.io/Proyecto-videojuegos/view/gestiones.html';
     } else {
         alert('Datos Incorrectos');
     }
