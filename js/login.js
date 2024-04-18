@@ -5,7 +5,7 @@ login.addEventListener('click',()=>{
     let password=document.getElementById('password').value,
     user=document.getElementById('user').value;
 
-    if (password=='JDPerez1005' && user=='Julian') {
+    if (password=='123456789' && user=='JulianPerez') {
         log=true;
         window.location.href = 'https://JPerez1005.github.io/Proyecto-videojuegos/view/gestiones.html';
     } else {
