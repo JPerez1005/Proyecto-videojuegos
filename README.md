@@ -30,4 +30,13 @@ es una pagina web con muchas funcionalidades
 ### funcionalidades
 ya que tiene un guardado de datos en memoria todos los clientes y videojuegos con los datos registrados quedan guardados, la pagina web es responsive y adaptable a todos los computadores
 
+## como probar la pagina web
+Para poder probar la pagina web si tener que descargarla, por favor dirigase a la sección de actions en el git hub
+![alt text](img/7.png)
+
+aquí encontrará multiples pruebas que hice con esta pagina mas sin embargo dirigase a la más actual
+![alt text](img/8.png)
+
+le generará un link que solo tiene que presionar con click para poder ingresar a la prueba de la pagina web
+
 # Gracias por su Atención!
